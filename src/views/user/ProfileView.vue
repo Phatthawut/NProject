@@ -4,6 +4,6 @@ import UserLayout from "@/layouts/UserLayout.vue";
 
 <template>
     <UserLayout>
-        Content Data
+        Profile Page
     </UserLayout>
 </template>
