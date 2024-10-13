@@ -37,16 +37,54 @@ onMounted(() => {
                     <h4 class="text-xl font-semibold">Hi, {{ orderData.name }}</h4>
                     <h4>Please check your order and confirm receipt</h4>
                 </div>
-                <div class="divider px-8"></div>
-                <div class="grid grid-cols-2 px-6">
+                <div class="divider px-4"></div>
+                <div class="grid grid-cols-2 gap-2 px-6">
                     <div class="flex flex-col">
                         <div class="font-semibold">Order date</div>
                         <div>{{ orderData.createdDate }}</div>
                     </div>
-                    <div>2</div>
-                    <div>3</div>
-                    <div>4</div>
+                    <div>
+                        <div class="font-semibold">Order Number</div>
+                        <div>{{ orderData.orderNumber }}</div>
+                    </div>
+                    <div>
+                        <div class="font-semibold">Payment Method</div>
+                        <div>{{ orderData.paymentMethod }}</div>
+                    </div>
+                    <div>
+                        <div class="font-semibold">Adress</div>
+                        <div>{{ orderData.address }}</div>
+                    </div>
                 </div>
+                <div class="divider px-4"></div>
+                <div v-for="product in orderData.products" class="grid grid-cols-4 gap-2 px-6 items-center">
+                    <div>
+                        <div><img :src="product.imageUrl" :alt="product.name" class="w-full h-full"></div>
+                    </div>
+                    <div>
+                        <div class="font-semibold">Product Name</div>
+                        <div>{{ product.name }}</div>
+                    </div>
+                    <div>
+                        <div class="font-semibold">Quantity</div>
+                        <div>{{ product.quantity }}</div>
+                    </div>
+                    <div>
+                        <div class="font-semibold">Total Price</div>
+                        <div>{{ product.price * product.quantity }}</div>
+                    </div>
+                </div>
+                <div class="divider px-4"></div>
+                <div class="grid grid-cols-4 px-6 font-semibold">
+                    <div class="col-span-3">Total Price</div>
+                    <div>{{ orderData.totalPrice }}</div>
+                </div>
+                <div class="divider px-4"></div>
+                <div v-for="product in orderData.products" class="grid grid-cols-4 px-6 font-semibold">
+                    <div class="col-span-3">Shipping Price</div>
+                    <div>{{ product.shipping }}</div>
+                </div>
+                <div class="divider px-4"></div>
             </div>
         </section>
     </UserLayout>

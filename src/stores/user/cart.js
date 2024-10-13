@@ -59,8 +59,9 @@ export const useCartStore = defineStore('cart', {
                 ...userData,
                 totalPrice: this.summaryPrice,
                 paymentMethod: 'Credit Card',
-                createdDate: (new Date()),
-                orderNumber: `OR${Math.floor((Math.random() * 90000) + 10000)}`
+                createdDate: (new Date()).toLocaleString(),
+                orderNumber: `OR${Math.floor((Math.random() * 90000) + 10000)}`,
+                products: this.items
             }
             localStorage.setItem('order-data', JSON.stringify(orderData))
         },
